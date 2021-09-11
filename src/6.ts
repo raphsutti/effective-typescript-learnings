@@ -42,10 +42,10 @@ type TStateWithProp = IState & { population: number };
 interface IState {
   name: string;
   capital: string;
-}
+} // In a library
 interface IState {
   population: number;
-}
+} // In our code base
 const victoria: IState = {
   name: "Victoria",
   capital: "Melbourne",
