@@ -1,17 +1,17 @@
 function rollDice1(sides: number): number {
-  return 2;
+  return sides;
 } // Statement
 const rollDice2 = function (sides: number): number {
-  return 2;
+  return sides;
 }; // Expression
 const rollDice3 = (sides: number): number => {
-  return 2;
+  return sides;
 }; // Expression
 
 // We can apply type declaration to the whole function at once
 type DiceRollFn = (sides: number) => number;
 const rollDice: DiceRollFn = (sides) => {
-  return 2;
+  return Math.floor(Math.random() * sides) + 1;
 };
 
 // Examples of how to reduce repetition on several function
