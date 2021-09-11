@@ -6,7 +6,7 @@ age = "12";
 age = "12" as any; // OK
 age += 1; // OK; at runtime, age is now "121"
 
-// There are no language services for any types
+// There are no language services for any types (renaming or autocomplete)
 interface Person {
   first: string;
   last: string;
