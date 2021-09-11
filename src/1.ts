@@ -1,4 +1,4 @@
-// Is TypeScript a compiled or interpreted language?
+// TypeScript compiles to JavaScript
 const add = (x: number, y: number) => x + y;
 
 // TypeScript tries to detect code that will fail an exception at runtime without running the code
