@@ -2,14 +2,14 @@ interface HiringManager {
   name: string;
 } // <-- Declaration
 
-const alice: HiringManager = { name: "Alice" }; // Type is Person
-const bob = { name: "Bob" } as HiringManager; // <-- Assertion. Type is Person
+const alice: HiringManager = { name: "Alice" }; // Type is HiringManager
+const bob = { name: "Bob" } as HiringManager; // <-- Assertion. Type is HiringManager
 
 const carol: HiringManager = {
   name: "Carol",
   occupation: "TypeScript developer",
   // ~~~~~~~~~ Object literal may only specify known properties
-  //           and 'occupation' does not exist in type 'Person'
+  //           and 'occupation' does not exist in type 'HiringManager'
 };
 const dan = {
   name: "Dan",
