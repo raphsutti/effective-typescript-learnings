@@ -1,19 +1,19 @@
 // Not DRY - add middleName to Candidate, CandidateWithBirthDate1 deviates
-interface Candidate {
+interface HiringManager {
   firstName: string;
   lastName: string;
 }
-interface CandidateWithBirthDate1 {
+interface NotDRYHiringManagerWithBirthDate {
   firstName: string;
   lastName: string;
   birthdate: Date;
 }
 
 // DRY
-interface ICandidateWithBirthDate2 extends Candidate {
+interface IHiringManagerWithBirthDate extends HiringManager {
   birthdate: Date;
 }
-type TCandidateWithBirthDate2 = Candidate & { birthdate: Date };
+type THiringManagerWithBirthDate = HiringManager & { birthdate: Date };
 
 // Pick fields
 interface Job {
