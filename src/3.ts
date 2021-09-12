@@ -7,10 +7,10 @@ age = "12" as any; // OK
 age += 1; // OK; at runtime, age is now "121"
 
 // There are no language services for any types (renaming or autocomplete)
-interface Candidate {
+interface TalentSearchCandidate {
   first: string;
   last: string;
 }
 
-const formatName = (p: Candidate) => `${p.first} ${p.last}`;
+const formatName = (p: TalentSearchCandidate) => `${p.first} ${p.last}`;
 const formatNameAny = (p: any) => `${p.first} ${p.last}`;
