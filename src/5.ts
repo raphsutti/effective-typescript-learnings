@@ -1,35 +1,56 @@
-function rollDice1(sides: number): number {
-  return sides;
-} // Statement
-const rollDice2 = function (sides: number): number {
-  return sides;
-}; // Expression
-const rollDice3 = (sides: number): number => {
-  return sides;
-}; // Expression
+// Callback hell example
+fetchURL(url1, function (response1) {
+  fetchURL(url2, function (response2) {
+    fetchURL(url3, function (response3) {
+      // ...
+      console.log(1);
+    });
+    console.log(2);
+  });
+  console.log(3);
+});
+console.log(4);
 
-// We can apply type declaration to the whole function at once
-type DiceRollFn = (sides: number) => number;
-const rollDice: DiceRollFn = (sides) => {
-  return Math.floor(Math.random() * sides) + 1;
-};
+// Logs:
+// 4
+// 3
+// 2
+// 1
 
-// Examples of how to reduce repetition on several function
-function add1(a: number, b: number) {
-  return a + b;
+// ES2015 Promise example
+const page1Promise = fetch(url1);
+page1Promise
+  .then((response1) => {
+    return fetch(url2);
+  })
+  .then((response2) => {
+    return fetch(url3);
+  })
+  .then((response3) => {
+    // ...
+  })
+  .catch((error) => {
+    // ...
+  });
+
+// ES2017 async and await example
+async function fetchPages() {
+  try {
+    const response1 = await fetch(url1);
+    const response2 = await fetch(url2);
+    const response3 = await fetch(url3);
+    // ...
+  } catch (e) {
+    // ...
+  }
 }
-function sub1(a: number, b: number) {
-  return a - b;
+
+// Running Promises in parallel
+async function fetchPages() {
+  const [response1, response2, response3] = await Promise.all([
+    fetch(url1),
+    fetch(url2),
+    fetch(url3),
+  ]);
+  // ...
 }
-function mul1(a: number, b: number) {
-  return a * b;
-}
-function div1(a: number, b: number) {
-  return a / b;
-}
-// To this
-type BinaryFn = (a: number, b: number) => number;
-const add2: BinaryFn = (a, b) => a + b;
-const sub2: BinaryFn = (a, b) => a - b;
-const mul2: BinaryFn = (a, b) => a * b;
-const div2: BinaryFn = (a, b) => a / b;
