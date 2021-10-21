@@ -36,7 +36,12 @@ interface IPair<T> {
 interface IStateWithProp extends TState {
   population: number;
 } // but not complex types eg. union
+type UState = { address: string } | { addresses: string };
+interface IStateWithProp extends UState {
+  population: number;
+}
 type TStateWithProp = IState & { population: number };
+type TStateWithProp2 = UState & { population: number };
 
 // Interface can be augmented
 interface IState {
