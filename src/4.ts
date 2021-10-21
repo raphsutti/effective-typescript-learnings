@@ -16,13 +16,13 @@ const dan = {
   occupation: "JavaScript developer",
 } as RecruitingManager; // No error
 
-const people = ["alice", "bob", "jan"].map((name) => ({ name }));
-// { name: string; }[]... but we want RecruitingManager[]
+// const people = ["alice", "bob", "jan"].map((name) => ({ name }));
+// // { name: string; }[]... but we want RecruitingManager[]
 
-interface RecruitingManager {
-  name: string;
-}
-const people2 = ["alice", "bob", "jan"].map((name) => {
-  const person: RecruitingManager = { name };
-  return person;
-}); // Type is RecruitingManager[]
+// interface RecruitingManager {
+//   name: string;
+// }
+// const people2 = ["alice", "bob", "jan"].map((name) => {
+//   const person: RecruitingManager = { name };
+//   return person;
+// }); // Type is RecruitingManager[]
