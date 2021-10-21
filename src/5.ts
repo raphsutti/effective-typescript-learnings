@@ -10,12 +10,15 @@ fetchURL(url1, function (response1) {
   console.log(3);
 });
 console.log(4);
-
 // Logs:
 // 4
 // 3
 // 2
 // 1
+
+const url1 = "example.com";
+const url2 = "example.com";
+const url3 = "example.com";
 
 // ES2015 Promise example
 const page1Promise = fetch(url1);
@@ -46,7 +49,7 @@ async function fetchPages() {
 }
 
 // Running Promises in parallel
-async function fetchPages() {
+async function fetchPagesParallel() {
   const [response1, response2, response3] = await Promise.all([
     fetch(url1),
     fetch(url2),
