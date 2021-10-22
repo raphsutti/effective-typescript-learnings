@@ -58,8 +58,4 @@ const randomDataMap = randomData.map((i) => {
 });
 
 const randomDataFiltered = randomData.filter((i) => i !== undefined); // return type is still (string | number | undefined)[]
-
-const isDefined = <T>(input: T | unknown): input is T => input !== undefined;
-
-// TODO
-const randomDataFiltered2 = randomData.filter((i) => isDefined(i));
+const randomDataFiltered2 = randomData.flatMap((e) => (e ? [e] : []));
