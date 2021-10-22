@@ -16,6 +16,9 @@ const dan = {
   occupation: "JavaScript developer",
 } as RecruitingManager; // No error
 
+type AddType = (a: number, b: number) => number;
+const addingFunction: AddType = (a, b) => a + b;
+
 // const people = ["alice", "bob", "jan"].map((name) => ({ name }));
 // // { name: string; }[]... but we want RecruitingManager[]
 
