@@ -2,7 +2,7 @@
 const add = (x: number, y: number) => x + y;
 
 // TypeScript tries to detect code that will fail an exception at runtime without running the code
-// TypeScript can also detect errors as type annotations tell TypeScript what your intent is (see `interface` below)
+// Tell TypeScript what your intent
 interface Candidate {
   name: string;
   title: "Principal Developer" | "Associate Developer";
@@ -23,6 +23,6 @@ const b = [] + 12;
 
 alert("Hello", "SEEK");
 
-// There are type checks that can still throw error at runtime
+// There are type checks that can still throw error at runtime but not detected
 const names = ["Alice", "Bob"];
 console.log(names[2].toUpperCase());
