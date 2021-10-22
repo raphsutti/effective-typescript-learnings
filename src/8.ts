@@ -1,3 +1,4 @@
+// Avoid over annotating types when it can be inferred
 let dummy: number = 12; // Don't do this
 let tummy = 12; // Type has been inferred
 
@@ -21,9 +22,9 @@ const bummy: string = "x"; // Type is string
 const gummy = "y"; // Type is "y"
 let yummy = "z"; // Type is string
 
-// Help when refactoring
+// Annotate types in signature than variables inside bodies - Help when refactoring
 interface PartnerInput {
-  uuid: number; // This will be refactored to string
+  uuid: number; // Change this to string
   name: string;
 }
 
@@ -44,7 +45,7 @@ const DRYLogPartner = (partner: PartnerInput) => {
   console.log(uuid, name);
 };
 
-// When to explicitly annotate type
+// Explicit annotaion for object literals
 const JobAdder = {
   name: "JobAdder",
   uuid: "202da638-7432-41f4-8c02-c7dc53f73ea5",
@@ -53,6 +54,7 @@ logPartner(JobAdder);
 // ~~~~~ Argument .. is not assignable to parameter of type 'PartnerInput'
 //         Types of property 'uuid' are incompatible
 //         Type 'string' is not assignable to type 'number'
+
 const Broadbean: PartnerInput = {
   name: "Furby",
   uuid: "d4681fce-d913-4aab-b929-e253abc889f2", // Catch this early
