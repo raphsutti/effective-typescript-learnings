@@ -1,3 +1,4 @@
+// Prefer Promises over callback
 // Callback hell example
 fetchURL(url1, function (response1) {
   fetchURL(url2, function (response2) {
@@ -36,8 +37,9 @@ page1Promise
     // ...
   });
 
+// Prefer async over raw Promises
 // ES2017 async and await example
-async function fetchPages() {
+const fetchPages = async () => {
   try {
     const response1 = await fetch(url1);
     const response2 = await fetch(url2);
@@ -46,14 +48,14 @@ async function fetchPages() {
   } catch (e) {
     // ...
   }
-}
+};
 
 // Running Promises in parallel
-async function fetchPagesParallel() {
+const fetchPagesParallel = async () => {
   const [response1, response2, response3] = await Promise.all([
     fetch(url1),
     fetch(url2),
     fetch(url3),
   ]);
   // ...
-}
+};
