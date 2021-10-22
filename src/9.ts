@@ -13,7 +13,7 @@ getComponent(vec, coordinateX);
 // ~ Argument of type 'string' is not assignable to
 //   parameter of type '"x" | "y" | "z"'
 
-// Declare specific type
+// How to affect TypeScripts type widening behaviour
 const wide1 = {
   x: 1,
 }; // Type is { x: number }
