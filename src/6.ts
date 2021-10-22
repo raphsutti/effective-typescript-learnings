@@ -32,6 +32,8 @@ async function changePage(state: State, newPage: string) {
     state.error = "" + e;
   }
 }
+// forgot to clear state.error in main case
+// forgot to set isLoading false in error
 
 // Fix
 interface RequestPending {
