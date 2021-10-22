@@ -1,4 +1,4 @@
-// Present invalid states mixed
+// Present invalid states mixed likely to be error prone
 interface State {
   pageText: string;
   isLoading: boolean;
@@ -35,7 +35,7 @@ async function changePage(state: State, newPage: string) {
 // forgot to clear state.error in main case
 // forgot to set isLoading false in error
 
-// Fix
+// Prefer types that present valid states even if they are longer or harder to express
 interface RequestPending {
   state: "pending";
 }
@@ -70,20 +70,20 @@ function renderPage(state: State) {
   }
 }
 
-async function changePage(state: State, newPage: string) {
-  state.requests[newPage] = { state: "pending" };
-  state.currentPage = newPage;
-  try {
-    const response = await fetch(getUrlForPage(newPage));
-    if (!response.ok) {
-      throw new Error(`Unable to load ${newPage}: ${response.statusText}`);
-    }
-    const pageText = await response.text();
-    state.requests[newPage] = { state: "ok", pageText };
-  } catch (e) {
-    state.requests[newPage] = { state: "error", error: "" + e };
-  }
-}
+// async function changePage(state: State, newPage: string) {
+//   state.requests[newPage] = { state: "pending" };
+//   state.currentPage = newPage;
+//   try {
+//     const response = await fetch(getUrlForPage(newPage));
+//     if (!response.ok) {
+//       throw new Error(`Unable to load ${newPage}: ${response.statusText}`);
+//     }
+//     const pageText = await response.text();
+//     state.requests[newPage] = { state: "ok", pageText };
+//   } catch (e) {
+//     state.requests[newPage] = { state: "error", error: "" + e };
+//   }
+// }
 
 // Air France
 
@@ -142,4 +142,8 @@ function getStickSetting(controls: CockpitControls) {
 interface CockpitControls {
   /** Angle of the stick in degrees, 0 = neutral, + = forward */
   stickAngle: number;
+}
+
+function getStickSetting(controls: CockpitControls) {
+  return controls.stickAngle;
 }
