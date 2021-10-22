@@ -9,7 +9,7 @@ interface NotDRYHiringManagerWithBirthDate {
   birthdate: Date;
 }
 
-// DRY
+// DRY - use extends to avoid repeating fields
 interface IHiringManagerWithBirthDate extends HiringManager {
   birthdate: Date;
 }
@@ -25,6 +25,7 @@ interface Job {
   location: string;
 }
 
+// Use indexing, maptypes, Pick
 type JobBrief = {
   title: Job["title"];
   location: Job["location"];
@@ -47,11 +48,11 @@ interface OptionsUpdate {
   color?: string;
   label?: string;
 }
-class UIWidget {
-  constructor(init: Options) {}
-  update(options: OptionsUpdate) {}
-}
-// DRY
+// class UIWidget {
+//   constructor(init: Options) {}
+//   update(options: OptionsUpdate) {}
+// }
+// DRY - mapped types to turn them to optionals
 type DRYOptionsUpdate = { [k in keyof Options]?: Options[k] };
 
 // Get type from an object
