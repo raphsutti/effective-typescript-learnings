@@ -1,3 +1,4 @@
+// Prefer type declaration over assertion
 interface RecruitingManager {
   name: string;
 } // <-- Declaration
@@ -16,6 +17,7 @@ const dan = {
   occupation: "JavaScript developer",
 } as RecruitingManager; // No error
 
+// Annotate types arrow function
 type AddType = (a: number, b: number) => number;
 const addingFunction: AddType = (a, b) => a + b;
 
