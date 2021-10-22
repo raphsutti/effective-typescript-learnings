@@ -23,7 +23,7 @@ const regina: CandidateApplicationUpdated = {
   type: "APPLICATION_UPDATED",
 };
 
-// Type narrow with truthy check
+// Type narrow with truthy check conditionals
 const eventsMapping1 = [glenn, regina, null].map((event) => {
   if (event) {
     return event.name; // event is CandidateApplicationCreated | CandidateApplicationUpdated
@@ -57,5 +57,15 @@ const randomDataMap = randomData.map((i) => {
   }
 });
 
+const randomDataFlapMap = randomData.map((i) => {
+  if (typeof i === "string") {
+    i;
+  }
+  if (typeof i === "number") {
+    i;
+  }
+});
+
+// Filtering
 const randomDataFiltered = randomData.filter((i) => i !== undefined); // return type is still (string | number | undefined)[]
 const randomDataFiltered2 = randomData.flatMap((e) => (e ? [e] : []));
