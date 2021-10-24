@@ -1,8 +1,8 @@
-// TypeScript compiles to JavaScript
+// >>> TypeScript compiles into a high level language, JavaScript
 const add = (x: number, y: number) => x + y;
 
-// TypeScript tries to detect code that will fail an exception at runtime without running the code
-// Tell TypeScript what your intent
+// >>> TypeScript tries to detect code that will fail an exception at runtime without running the code
+// Tell TypeScript your intent
 interface Candidate {
   name: string;
   title: "Principal Developer" | "Associate Developer";
@@ -23,6 +23,6 @@ const b = [] + 12;
 
 alert("Hello", "SEEK");
 
-// There are type checks that can still throw error at runtime but not detected
+// >>> There are type checks that can still throw error at runtime
 const names = ["Alice", "Bob"];
 console.log(names[2].toUpperCase());

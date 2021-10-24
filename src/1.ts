@@ -1,6 +1,6 @@
-// tsc --init
+// >>> Run tsc --init
 
-// tsconfig.json file
+// >>> In tsconfig.json file
 
 // implicit any
 const addNumbers = (a, b) => a + b;

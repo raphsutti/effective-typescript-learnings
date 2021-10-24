@@ -1,3 +1,4 @@
+// >>> Understand how TypeScript narrows types based on conditionals other types of control flow
 interface CandidateDetail {
   name: string;
   email: string;
@@ -31,6 +32,7 @@ const eventsMapping1 = [glenn, regina, null].map((event) => {
   return event; // event is null
 });
 
+// >>> Use tagged/discriminated unions and user-defined type guards to help the process of narrowing
 // Type narrow with discriminated union
 const eventsMapping2 = [glenn, regina].map((event) => {
   switch (event.type) {

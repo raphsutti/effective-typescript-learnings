@@ -1,4 +1,4 @@
-// Avoid over annotating types when it can be inferred
+// >>> Avoid writing type annotations when TypeScript can infer the same type
 let dummy: number = 12; // Don't do this
 let tummy = 12; // Type has been inferred
 
@@ -22,7 +22,7 @@ const bummy: string = "x"; // Type is string
 const gummy = "y"; // Type is "y"
 let yummy = "z"; // Type is string
 
-// Annotate types in signature than variables inside bodies - Help when refactoring
+// >>> Ideally, type annotations in function signatures but not on local variables in their bodies
 interface PartnerInput {
   uuid: number; // Change this to string
   name: string;
@@ -45,7 +45,7 @@ const DRYLogPartner = (partner: PartnerInput) => {
   console.log(uuid, name);
 };
 
-// Explicit annotaion for object literals
+// >>> Use explicit annotations for object literals and function return types
 const JobAdder = {
   name: "JobAdder",
   uuid: "202da638-7432-41f4-8c02-c7dc53f73ea5",

@@ -1,4 +1,4 @@
-// Present invalid states mixed likely to be error prone
+// >>> Types that represent both valid and invalid states are likely to lead to confusing and error-prone code
 interface State {
   pageText: string;
   isLoading: boolean;
@@ -35,7 +35,7 @@ async function changePage(state: State, newPage: string) {
 // forgot to clear state.error in main case
 // forgot to set isLoading false in error
 
-// Prefer types that present valid states even if they are longer or harder to express
+// >>> Prefer types that only represent valid states. Even if they are longer or harder to express, they will save time and pain in the end
 interface RequestPending {
   state: "pending";
 }

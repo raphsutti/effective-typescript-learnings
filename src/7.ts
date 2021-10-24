@@ -1,3 +1,5 @@
+// >>> DRY - don't repeat yourself applies to types
+// >>> Name types rather than repeating them. Use extends to avoid repeating fields
 // Not DRY - add middleName to Candidate, CandidateWithBirthDate1 deviates
 interface HiringManager {
   firstName: string;
@@ -9,13 +11,13 @@ interface NotDRYHiringManagerWithBirthDate {
   birthdate: Date;
 }
 
-// DRY - use extends to avoid repeating fields
+// DRY
 interface IHiringManagerWithBirthDate extends HiringManager {
   birthdate: Date;
 }
 type THiringManagerWithBirthDate = HiringManager & { birthdate: Date };
 
-// Pick fields
+// `keyof`, `typeof`, indexing, mapped types
 interface Job {
   id: string;
   title: string;
@@ -25,14 +27,16 @@ interface Job {
   location: string;
 }
 
-// Use indexing, maptypes, Pick
+// Indexing
 type JobBrief = {
   title: Job["title"];
   location: Job["location"];
 };
+// Maptypes
 type MJobBrief = {
   [k in "title" | "location"]: Job[k];
 };
+// Pick
 type PJobBrief = Pick<Job, "title" | "location">;
 
 // Making fields optional
@@ -90,7 +94,7 @@ const sub2: BinaryFn = (a, b) => a - b;
 const mul2: BinaryFn = (a, b) => a * b;
 const div2: BinaryFn = (a, b) => a / b;
 
-// Constraining Generic
+// >>> Generics are functions for types. Use them to map between types instead of repeating types. Use `extends` to constrain generic types
 interface Developer {
   name: string;
   speciality: "FRONTEND" | "BACKEND";

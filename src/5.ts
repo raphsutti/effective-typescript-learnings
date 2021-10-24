@@ -1,4 +1,4 @@
-// Prefer Promises over callback
+// >>> Prefer Promises to callbacks for better composability and type flow
 // Callback hell example
 fetchURL(url1, function (response1) {
   fetchURL(url2, function (response2) {
@@ -37,7 +37,7 @@ page1Promise
     // ...
   });
 
-// Prefer async over raw Promises
+// >>> Prefer async and await to raw Promises when possible. They produce more concise, straightforward code and eliminate whole classes of error
 // ES2017 async and await example
 const fetchPages = async () => {
   try {
