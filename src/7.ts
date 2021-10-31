@@ -40,39 +40,17 @@ type MJobBrief = {
 type PJobBrief = Pick<Job, "title" | "location">;
 
 // Making fields optional
-interface Options {
-  width: number;
-  height: number;
-  color: string;
-  label: string;
+interface Address {
+  line1: string;
+  line2: string;
 }
-interface OptionsUpdate {
-  width?: number;
-  height?: number;
-  color?: string;
-  label?: string;
+interface AddressOptional {
+  line1?: string;
+  line2?: string;
 }
-// class UIWidget {
-//   constructor(init: Options) {}
-//   update(options: OptionsUpdate) {}
-// }
-// DRY - mapped types to turn them to optionals
-type DRYOptionsUpdate = { [k in keyof Options]?: Options[k] };
 
-// Get type from an object
-const INIT_OPTIONS = {
-  width: 640,
-  height: 480,
-  color: "#00FF00",
-  label: "VGA",
-};
-interface Options {
-  width: number;
-  height: number;
-  color: string;
-  label: string;
-}
-type DRYOptions = typeof INIT_OPTIONS;
+// DRY - mapped types to turn them to optionals
+type DRYAddressOptional = { [k in keyof Address]?: Address[k] };
 
 // Examples of how to reduce repetition on several function
 function add1(a: number, b: number) {
@@ -81,25 +59,18 @@ function add1(a: number, b: number) {
 function sub1(a: number, b: number) {
   return a - b;
 }
-function mul1(a: number, b: number) {
-  return a * b;
-}
-function div1(a: number, b: number) {
-  return a / b;
-}
+
 // To this
 type BinaryFn = (a: number, b: number) => number;
 const add2: BinaryFn = (a, b) => a + b;
 const sub2: BinaryFn = (a, b) => a - b;
-const mul2: BinaryFn = (a, b) => a * b;
-const div2: BinaryFn = (a, b) => a / b;
 
 // >>> Generics are functions for types. Use them to map between types instead of repeating types. Use `extends` to constrain generic types
 interface Developer {
   name: string;
   speciality: "FRONTEND" | "BACKEND";
 }
-type PairingDuo<T extends Developer> = [T, T];
+type PairingDuo<T extends Developer> = [T, T]; // Remove extends
 
 const pair1: PairingDuo<Developer> = [
   { name: "Ron", speciality: "BACKEND" },
