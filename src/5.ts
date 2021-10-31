@@ -50,12 +50,13 @@ const fetchPages = async () => {
   }
 };
 
+const mockFetch = (url: string) => Promise.resolve(url);
 // Running Promises in parallel
 const fetchPagesParallel = async () => {
   const [response1, response2, response3] = await Promise.all([
     fetch(url1),
     fetch(url2),
-    fetch(url3),
+    mockFetch(url3),
   ]);
   // ...
 };
