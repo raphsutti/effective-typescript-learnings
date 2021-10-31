@@ -46,17 +46,17 @@ const DRYLogPartner = (partner: PartnerInput) => {
 };
 
 // >>> Use explicit annotations for object literals and function return types
-const JobAdder = {
+const Partner1 = {
   name: "JobAdder",
   uuid: "202da638-7432-41f4-8c02-c7dc53f73ea5",
 };
-logPartner(JobAdder);
+logPartner(Partner1);
 // ~~~~~ Argument .. is not assignable to parameter of type 'PartnerInput'
 //         Types of property 'uuid' are incompatible
 //         Type 'string' is not assignable to type 'number'
 
-const Broadbean: PartnerInput = {
-  name: "Furby",
+const Partner2: PartnerInput = {
+  name: "Broadbean",
   uuid: "d4681fce-d913-4aab-b929-e253abc889f2", // Catch this early
 };
-logPartner(Broadbean);
+logPartner(Partner2);
