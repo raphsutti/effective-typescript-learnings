@@ -5,23 +5,20 @@ interface State {
   error?: string;
 }
 
-declare let currentPage: string;
-function renderPage(state: State) {
-  if (state.error) {
-    return `Error! Unable to load ${currentPage}: ${state.error}`;
-  } else if (state.isLoading) {
-    return `Loading ${currentPage}...`;
-  }
-  return `<h1>${currentPage}</h1>\n${state.pageText}`;
-}
+// declare let currentPage: string;
+// function renderPage(state: State) {
+//   if (state.error) {
+//     return `Error! Unable to load ${currentPage}: ${state.error}`;
+//   } else if (state.isLoading) {
+//     return `Loading ${currentPage}...`;
+//   }
+//   return `<h1>${currentPage}</h1>\n${state.pageText}`;
+// }
 
-function getUrlForPage(p: string) {
-  return "";
-}
 async function changePage(state: State, newPage: string) {
   state.isLoading = true;
   try {
-    const response = await fetch(getUrlForPage(newPage));
+    const response = await fetch(newPage);
     if (!response.ok) {
       throw new Error(`Unable to load ${newPage}: ${response.statusText}`);
     }
@@ -29,9 +26,8 @@ async function changePage(state: State, newPage: string) {
     state.isLoading = false;
     state.pageText = text;
   } catch (e) {
-    state.error = "" + e;
+    state.error = String(e);
   }
-}
 // forgot to clear state.error in main case
 // forgot to set isLoading false in error
 
@@ -54,9 +50,6 @@ interface State {
   requests: { [page: string]: RequestState };
 }
 
-function getUrlForPage(p: string) {
-  return "";
-}
 function renderPage(state: State) {
   const { currentPage } = state;
   const requestState = state.requests[currentPage];
@@ -85,7 +78,7 @@ function renderPage(state: State) {
 //   }
 // }
 
-// Air France
+// >>> Air France
 
 interface CockpitControls {
   /** Angle of the left side stick in degrees, 0 = neutral, + = forward */
@@ -95,12 +88,12 @@ interface CockpitControls {
 }
 
 // Pilot in control
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting1(controls: CockpitControls) {
   return controls.leftSideStick;
 }
 
 // Assume copilot taken control when pilot stick is at 0
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting2(controls: CockpitControls) {
   const { leftSideStick, rightSideStick } = controls;
   if (leftSideStick === 0) {
     return rightSideStick;
@@ -109,7 +102,7 @@ function getStickSetting(controls: CockpitControls) {
 }
 
 // Also check for copilot stick at 0
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting3(controls: CockpitControls) {
   const { leftSideStick, rightSideStick } = controls;
   if (leftSideStick === 0) {
     return rightSideStick;
@@ -120,7 +113,7 @@ function getStickSetting(controls: CockpitControls) {
 }
 
 // What if both non-zero? When they are around the same position? Average them?
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting4(controls: CockpitControls) {
   const { leftSideStick, rightSideStick } = controls;
   if (leftSideStick === 0) {
     return rightSideStick;
@@ -134,7 +127,7 @@ function getStickSetting(controls: CockpitControls) {
 }
 
 // Air France 447
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting5(controls: CockpitControls) {
   return (controls.leftSideStick + controls.rightSideStick) / 2;
 }
 
@@ -144,6 +137,6 @@ interface CockpitControls {
   stickAngle: number;
 }
 
-function getStickSetting(controls: CockpitControls) {
+function getStickSetting6(controls: CockpitControls) {
   return controls.stickAngle;
 }
