@@ -1,19 +1,19 @@
 // >>> Understand how TypeScript infers a type from a constant by widening it
 // >>> Familiarise with the way you can affect this behaviour: const, type annotations, context, and as const
 // Minimise TypeScript widening by using const rather than let
-interface Vector3 {
-  x: number;
-  y: number;
-  z: number;
-}
-function getComponent(vector: Vector3, axis: "x" | "y" | "z") {
-  return vector[axis];
-}
-let coordinateX = "x"; // change this to const
-let vec = { x: 10, y: 20, z: 30 };
-getComponent(vec, coordinateX);
-// ~ Argument of type 'string' is not assignable to
-//   parameter of type '"x" | "y" | "z"'
+type AdType = "Classic" | "Standout" | "SuperPremium";
+const getPrice = (ad: AdType) => {
+  switch (ad) {
+    case "Classic":
+      return 1;
+    case "Standout":
+      return 2;
+    case "SuperPremium":
+      return 9000;
+  }
+};
+let inputAd = "Classic"; // change this to const
+getPrice(inputAd);
 
 // How to affect TypeScripts type widening behaviour
 const wide1 = {
