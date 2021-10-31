@@ -46,28 +46,29 @@ const eventsMapping2 = [glenn, regina].map((event) => {
 });
 
 // Type narrow with custom function (type guard)
-const isString = (input: unknown): input is string => typeof input === "string";
-const isNumber = (input: unknown): input is number => typeof input === "number";
-
 const randomData = [1234, "hello!", undefined];
 const randomDataMap = randomData.map((i) => {
-  if (isString(i)) {
-    i; // i is string
-  }
-  if (isNumber(i)) {
-    i; // i is number
-  }
-});
-
-const randomDataFlapMap = randomData.map((i) => {
   if (typeof i === "string") {
-    i;
+    return i; // i is string
   }
   if (typeof i === "number") {
-    i;
+    return i; // i is number
   }
+  return i; // i is undefined
 });
 
-// Filtering
+// const isString = (input: unknown): input is string => typeof input === "string";
+// const isNumber = (input: unknown): input is number => typeof input === "number";
+// const randomDataMap2 = randomData.map((i) => {
+//   if (isString(i)) {
+//     return i; // i is string
+//   }
+//   if (isNumber(i)) {
+//     return i; // i is number
+//   }
+//   return i // i is undefined
+// });
+
+// Filtering with flatMap
 const randomDataFiltered = randomData.filter((i) => i !== undefined); // return type is still (string | number | undefined)[]
 const randomDataFiltered2 = randomData.flatMap((e) => (e ? [e] : []));
