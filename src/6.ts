@@ -28,6 +28,7 @@ async function changePage(state: State, newPage: string) {
   } catch (e) {
     state.error = String(e);
   }
+}
 // forgot to clear state.error in main case
 // forgot to set isLoading false in error
 
