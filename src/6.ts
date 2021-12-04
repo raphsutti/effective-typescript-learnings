@@ -32,37 +32,37 @@ async function changePage(state: State, newPage: string) {
 // forgot to clear state.error in main case
 // forgot to set isLoading false in error
 
-// >>> Prefer types that only represent valid states. Even if they are longer or harder to express, they will save time and pain in the end
-interface RequestPending {
-  state: "pending";
-}
-interface RequestError {
-  state: "error";
-  error: string;
-}
-interface RequestSuccess {
-  state: "ok";
-  pageText: string;
-}
-type RequestState = RequestPending | RequestError | RequestSuccess;
+// // >>> Prefer types that only represent valid states. Even if they are longer or harder to express, they will save time and pain in the end
+// interface RequestPending {
+//   state: "pending";
+// }
+// interface RequestError {
+//   state: "error";
+//   error: string;
+// }
+// interface RequestSuccess {
+//   state: "ok";
+//   pageText: string;
+// }
+// type RequestState = RequestPending | RequestError | RequestSuccess;
 
-interface State {
-  currentPage: string;
-  requests: { [page: string]: RequestState };
-}
+// interface State {
+//   currentPage: string;
+//   requests: { [page: string]: RequestState };
+// }
 
-function renderPage(state: State) {
-  const { currentPage } = state;
-  const requestState = state.requests[currentPage];
-  switch (requestState.state) {
-    case "pending":
-      return `Loading ${currentPage}...`;
-    case "error":
-      return `Error! Unable to load ${currentPage}: ${requestState.error}`;
-    case "ok":
-      return `<h1>${currentPage}</h1>\n${requestState.pageText}`;
-  }
-}
+// function renderPage(state: State) {
+//   const { currentPage } = state;
+//   const requestState = state.requests[currentPage];
+//   switch (requestState.state) {
+//     case "pending":
+//       return `Loading ${currentPage}...`;
+//     case "error":
+//       return `Error! Unable to load ${currentPage}: ${requestState.error}`;
+//     case "ok":
+//       return `<h1>${currentPage}</h1>\n${requestState.pageText}`;
+//   }
+// }
 
 // async function changePage(state: State, newPage: string) {
 //   state.requests[newPage] = { state: "pending" };

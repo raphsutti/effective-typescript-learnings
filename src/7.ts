@@ -70,7 +70,7 @@ interface Developer {
   name: string;
   speciality: "FRONTEND" | "BACKEND";
 }
-type PairingDuo<T extends Developer> = [T, T]; // Remove extends
+type PairingDuo<T> = [T, T]; // Add extends Developer
 
 const pair1: PairingDuo<Developer> = [
   { name: "Ron", speciality: "BACKEND" },
