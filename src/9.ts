@@ -1,5 +1,5 @@
 // >>> Understand how TypeScript infers a type from a constant by widening it
-// >>> Familiarise with the way you can affect this behaviour: const, type annotations, context, and as const
+// >>> const, type annotations, context, and as const
 // Minimise TypeScript widening by using const rather than let
 type AdType = "Classic" | "Standout" | "SuperPremium";
 const getPrice = (ad: AdType) => {
