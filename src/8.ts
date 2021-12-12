@@ -24,39 +24,39 @@ let yummy = "z"; // Type is string
 
 // >>> Ideally, type annotations in function signatures but not on local variables in their bodies
 interface PartnerInput {
-  uuid: number; // Change this to string
+  id: number; // Change this to string
   name: string;
 }
 
 const logPartner = (partner: PartnerInput) => {
-  const uuid: number = partner.uuid;
+  const id: number = partner.id;
   const name: string = partner.name;
-  console.log(uuid, name);
+  console.log(id, name);
 };
 
-const InferredLogPartner = (partner: PartnerInput) => {
-  const uuid = partner.uuid;
-  const name = partner.name;
-  console.log(uuid, name);
-};
+// const InferredLogPartner = (partner: PartnerInput) => {
+//   const id = partner.id;
+//   const name = partner.name;
+//   console.log(id, name);
+// };
 
 const DRYLogPartner = (partner: PartnerInput) => {
-  const { uuid, name } = partner;
-  console.log(uuid, name);
+  const { id, name } = partner;
+  console.log(id, name);
 };
 
-// >>> Use explicit annotations for object literals and function return types
-const Partner1 = {
-  name: "JobAdder",
-  uuid: "202da638-7432-41f4-8c02-c7dc53f73ea5",
-};
-logPartner(Partner1);
-// ~~~~~ Argument .. is not assignable to parameter of type 'PartnerInput'
-//         Types of property 'uuid' are incompatible
-//         Type 'string' is not assignable to type 'number'
+// // >>> Use explicit annotations for object literals and function return types
+// const Partner1 = {
+//   name: "JobAdder",
+//   uuid: "202da638-7432-41f4-8c02-c7dc53f73ea5",
+// };
+// logPartner(Partner1);
+// // ~~~~~ Argument .. is not assignable to parameter of type 'PartnerInput'
+// //         Types of property 'uuid' are incompatible
+// //         Type 'string' is not assignable to type 'number'
 
-const Partner2: PartnerInput = {
-  name: "Broadbean",
-  uuid: "d4681fce-d913-4aab-b929-e253abc889f2", // Catch this early
-};
-logPartner(Partner2);
+// const Partner2: PartnerInput = {
+//   name: "Broadbean",
+//   id: "d4681fce-d913-4aab-b929-e253abc889f2", // Catch this early
+// };
+// logPartner(Partner2);

@@ -1,5 +1,4 @@
-// >>> DRY - don't repeat yourself applies to types
-// >>> Name types rather than repeating them. Use extends to avoid repeating fields
+// >>> DRY - don't repeat yourself applies to types. Name types rather than repeating them. Use extends to avoid repeating fields
 // Not DRY - add middleName to Candidate, CandidateWithBirthDate1 deviates
 interface HiringManager {
   firstName: string;

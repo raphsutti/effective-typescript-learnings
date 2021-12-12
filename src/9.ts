@@ -40,6 +40,6 @@ const superNarrow2 = {
   y: 2,
 } as const; // Type is { readonly x: 1; readonly y: 2; }
 
-// Tuple
-const a1 = [1, 2, 3]; // Type is number[]
-const a2 = [1, 2, 3] as const; // Type is readonly [1, 2, 3]
+// // Tuple
+// const a1 = [1, 2, 3]; // Type is number[]
+// const a2 = [1, 2, 3] as const; // Type is readonly [1, 2, 3]

@@ -70,5 +70,5 @@ const randomDataMap = randomData.map((i) => {
 // });
 
 // Filtering with flatMap
-const randomDataFiltered = randomData.filter((i) => i !== undefined); // return type is still (string | number | undefined)[]
-const randomDataFiltered2 = randomData.flatMap((e) => (e ? [e] : []));
+// const randomDataFiltered = randomData.filter((i) => i !== undefined); // return type is still (string | number | undefined)[]
+// const randomDataFiltered2 = randomData.flatMap((e) => (e ? [e] : []));
