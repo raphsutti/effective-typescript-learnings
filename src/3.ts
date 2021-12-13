@@ -12,5 +12,6 @@ interface TalentSearchCandidate {
   last: string;
 }
 
+// Full name in the format of first last eg. "John Smith"
 const formatName = (p: TalentSearchCandidate) => `${p.first} ${p.last}`;
 const formatNameAny = (p: any) => `${p.first} ${p.last}`;

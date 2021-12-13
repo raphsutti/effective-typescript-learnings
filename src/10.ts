@@ -1,4 +1,14 @@
 // >>> Understand how TypeScript narrows types based on conditionals other types of control flow
+
+// [
+//   {
+//     name: "James",
+//     email: "james.smith@gmail.com",
+//     uuid: "123",
+//     type: "APPLICATION_CREATED"
+//   }
+// ]
+
 interface CandidateDetail {
   name: string;
   email: string;

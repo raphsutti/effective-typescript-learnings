@@ -80,57 +80,54 @@ async function changePage(state: State, newPage: string) {
 // }
 
 // >>> Air France
-
 interface CockpitControls {
   /** Angle of the left side stick in degrees, 0 = neutral, + = forward */
-  leftSideStick: number;
+  leftStick: number;
   /** Angle of the right side stick in degrees, 0 = neutral, + = forward */
-  rightSideStick: number;
+  rightStick: number;
 }
 
 // Pilot in control
-function getStickSetting1(controls: CockpitControls) {
-  return controls.leftSideStick;
-}
+const getStickSetting1 = (controls: CockpitControls) => {
+  return controls.leftStick;
+};
 
 // Assume copilot taken control when pilot stick is at 0
-function getStickSetting2(controls: CockpitControls) {
-  const { leftSideStick, rightSideStick } = controls;
-  if (leftSideStick === 0) {
-    return rightSideStick;
+const getStickSetting2 = ({ leftStick, rightStick }: CockpitControls) => {
+  if (leftStick === 0) {
+    return rightStick;
   }
-  return leftSideStick;
-}
+  return leftStick;
+};
 
 // Also check for copilot stick at 0
-function getStickSetting3(controls: CockpitControls) {
-  const { leftSideStick, rightSideStick } = controls;
-  if (leftSideStick === 0) {
-    return rightSideStick;
-  } else if (rightSideStick === 0) {
-    return leftSideStick;
+function getStickSetting3({ leftStick, rightStick }: CockpitControls) {
+  if (leftStick === 0) {
+    return rightStick;
+  }
+  if (rightStick === 0) {
+    return leftStick;
   }
   // ???
 }
 
 // What if both non-zero? When they are around the same position? Average them?
-function getStickSetting4(controls: CockpitControls) {
-  const { leftSideStick, rightSideStick } = controls;
-  if (leftSideStick === 0) {
-    return rightSideStick;
-  } else if (rightSideStick === 0) {
-    return leftSideStick;
+function getStickSetting4({ leftStick, rightStick }: CockpitControls) {
+  if (leftStick === 0) {
+    return rightStick;
   }
-  if (Math.abs(leftSideStick - rightSideStick) < 5) {
-    return (leftSideStick + rightSideStick) / 2;
+  if (rightStick === 0) {
+    return leftStick;
   }
-  // ???
+  if (Math.abs(leftStick - rightStick) < 5) {
+    return (leftStick + rightStick) / 2;
+  }
 }
 
-// Air France 447
-function getStickSetting5(controls: CockpitControls) {
-  return (controls.leftSideStick + controls.rightSideStick) / 2;
-}
+// // Air France 447
+// function getStickSetting5({ leftStick, rightStick }: CockpitControls) {
+//   return (leftStick + rightStick) / 2;
+// }
 
 // Mechanically linked
 interface CockpitControls {
@@ -138,6 +135,6 @@ interface CockpitControls {
   stickAngle: number;
 }
 
-function getStickSetting6(controls: CockpitControls) {
-  return controls.stickAngle;
+function getStickSetting6({ stickAngle }: CockpitControls) {
+  return stickAngle;
 }

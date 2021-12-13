@@ -1,11 +1,11 @@
 // >>> Avoid writing type annotations when TypeScript can infer the same type
-let dummy: number = 12; // Don't do this
-let tummy = 12; // Type has been inferred
+let age1: number = 12; // Don't do this
+let age2 = 12; // Type has been inferred
 
 // Complex object inferred
-const Partner = {
+const ryanair = {
   name: "Ryanair International",
-  partnerTier: "SUPER_PREMIUM" as const,
+  partnerTier: "SUPER_MEGA_PREMIUM" as const,
   headOfficeAddress: {
     addressLine1: "60 Cremorne street",
     addressLine2: undefined,
@@ -18,9 +18,9 @@ const square = (nums: number[]) => nums.map((x) => x * x);
 const squares = square([1, 2, 3, 4]); // Type is number[]
 
 // Preciseness
-const bummy: string = "x"; // Type is string
-const gummy = "y"; // Type is "y"
-let yummy = "z"; // Type is string
+const frog: string = "x"; // Type is string
+const dog = "y"; // Type is "y"
+let grog = "z"; // Type is string
 
 // >>> Ideally, type annotations in function signatures but not on local variables in their bodies
 interface PartnerInput {
@@ -40,8 +40,8 @@ const logPartner = (partner: PartnerInput) => {
 //   console.log(id, name);
 // };
 
-const DRYLogPartner = (partner: PartnerInput) => {
-  const { id, name } = partner;
+const DRYLogPartner = ({ id, name }: PartnerInput) => {
+  // const { id, name } = partner;
   console.log(id, name);
 };
 

@@ -1,5 +1,4 @@
 // >>> Run tsc --init
-
 // >>> In tsconfig.json file
 
 // implicit any

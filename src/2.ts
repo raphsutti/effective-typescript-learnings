@@ -6,12 +6,11 @@ const add = (x: number, y: number) => x + y;
 interface Candidate {
   name: string;
   title: "Principal Developer" | "Associate Developer";
-  favColour: string;
 }
 
 const candidates: Candidate[] = [
-  { name: "James", title: "Associate Developer", favColour: "green" },
-  { name: "John", title: "Principle Developer", favColor: "blue" },
+  { name: "James", title: "Associate Developer" },
+  { name: "John", title: "Principle Developer" },
 ];
 
 // TypeScript models runtime behaviour of JavaScript

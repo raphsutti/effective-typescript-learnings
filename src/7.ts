@@ -16,7 +16,7 @@ interface IHiringManagerWithBirthDate extends HiringManager {
 }
 type THiringManagerWithBirthDate = HiringManager & { birthdate: Date };
 
-// `keyof`, `typeof`, indexing, mapped types
+// >>> Use `keyof`, `typeof`, indexing, mapped types
 interface Job {
   id: string;
   title: string;

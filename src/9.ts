@@ -35,10 +35,15 @@ const narrow2 = {
   y: 2,
 }; // Type is { x: 1; y: number; }
 
+narrow2.y = 100;
+narrow2.x = 2; // Type '2' is not assignable to type '1'
+
 const superNarrow2 = {
   x: 1,
   y: 2,
 } as const; // Type is { readonly x: 1; readonly y: 2; }
+
+superNarrow2.x = 3; // Cannot assign to 'x' because it is a read-only property.ts(2540)
 
 // // Tuple
 // const a1 = [1, 2, 3]; // Type is number[]
